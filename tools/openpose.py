@@ -6,7 +6,7 @@ import subprocess
 openpose_path=r'D:\environment\Openpose\openpose'
 # data_path = r'G:\MyData\XieData\todo_images\red\images'
 # output_path = r'G:\MyData\XieData\todo_images\red\openpose'
-data_path = r'E:\BaiduNetdiskDownload\MPI\for_texture\images'
+data_path = r'F:\MyDataF\DataSet\kate_dance_01\easymocap\images'
 output_path = os.path.join(data_path, '..\openpose')
 os.makedirs(output_path,exist_ok=True)
 

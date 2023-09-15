@@ -1,5 +1,5 @@
 ## 把yaml格式相机转为npy格式
-
+# 似乎只适合最早期我们自己采集的数据
 import os
 import numpy as np
 import cv2

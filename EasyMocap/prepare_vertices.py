@@ -7,7 +7,8 @@ import glob
 
 # data_root = r'H:\dataset\realtime\Vlad\output\smpl'
 # data_root = r'G:\MyData\PhySG\CoreView_313\mv1pout'
-data_root = r'G:\MyData\repose\repose_2023.2.28\coreview_313'
+# data_root = r'G:\MyData\repose\repose_2023.2.28\coreview_313'
+data_root = r'F:\MyDataF\DataSet\megan\easymocap\mv1pout1'
 smpl_input_path = os.path.join(data_root,'vertices')
 output_path = os.path.join(data_root,'new_vertices')
 # strart_frame = 15275

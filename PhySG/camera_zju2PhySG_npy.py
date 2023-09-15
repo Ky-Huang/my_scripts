@@ -1,5 +1,4 @@
 ## 把coreview的anotion.npy格式相机参数转为PySG需要的cam_dict_norm.json相机参数
-# 有bug不能用
 
 import numpy
 import json
