@@ -3,14 +3,15 @@ import numpy as np
 import cv2
 from pathlib import Path
 
+# ----------------------------------修改------------------------------------------------------
+intri_yaml_path = r'F:\MyDataF\DataSet\synth\smpl2_dance_multiView_singleFrame\easymocap\intri.yml'
+extri_yaml_path = r'F:\MyDataF\DataSet\synth\smpl2_dance_multiView_singleFrame\easymocap\extri.yml'
 
-intri_yaml_path = r'F:\MyDataF\DataSet\megan\easymocap\intri.yml'
-extri_yaml_path = r'F:\MyDataF\DataSet\megan\easymocap\extri.yml'
-
-data_path = r'F:\MyDataF\DataSet\megan\easymocap'
+data_path = r'F:\MyDataF\DataSet\synth\smpl2_dance_multiView_singleFrame\easymocap'
 start_frame = 0
-total_frame = 120
+total_frame = 1
 image_ext = "png"
+skip_frames = []
 
 # -------------------------------------------------------------------------------------------------
 
@@ -33,13 +34,15 @@ for cam_name in cam_names:
     R.append(extri_yaml.getNode(f"Rot_{cam_name}").mat().tolist())
     T.append(extri_yaml.getNode(f"T_{cam_name}").mat().tolist())
     D.append(intri_yaml.getNode(f"dist_{cam_name}").mat().tolist())
-output_npy["cams"]["K"] = K
-output_npy["cams"]["R"] = R
-output_npy["cams"]["T"] = T
-output_npy["cams"]["D"] = D
+output_npy["cams"]["K"] = np.array(K)
+output_npy["cams"]["R"] = np.array(R)
+output_npy["cams"]["T"] = np.array(T) * 1000
+output_npy["cams"]["D"] = np.array(D)
 
 # img路径“ims”
 for i in range(total_frame):
+    if i in skip_frames:
+        continue
     output_npy["ims"].append({"ims":[f"{cam_name}/{start_frame+i:04d}.{image_ext}" for cam_name in cam_names]})
 
 # 检查imgs路径是否存在

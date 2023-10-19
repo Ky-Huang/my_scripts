@@ -16,7 +16,8 @@ output_root = r'E:\BaiduNetdiskDownload\for relighting quan  1128\rrengine_resul
 input_dir = r'G:\MyData\HumanNeRF\jinitaimei_images'
 for input_image in glob.glob(input_dir + '/*.png'):
     ori_img = cv2.imread(input_image)
-    crop_img = ori_img[:, :1280, :]
+    crop_img = ori_img[:, :1280, :]                                                             # 裁切[高，宽，rgb]
+    # resized_image = cv2.resize(ori_img, (512, 512), interpolation=cv2.INTER_LINEAR)           # resize
     cv2.imwrite(input_image, crop_img)
 
 

@@ -7,7 +7,7 @@ import glob
 
 # data_root = r'H:\dataset\realtime\Vlad\output\smpl'
 # data_root = r'G:\MyData\PhySG\CoreView_313\mv1pout'
-data_root = r'F:\MyDataF\DataSet\megan\easymocap\mv1pout1'
+data_root = r'F:\MyDataF\DataSet\synth\smpl2_dance_multiView_singleFrame\easymocap\mv1pout2'
 smpl_input_path = os.path.join(data_root,'smpl')
 output_path = os.path.join(data_root,'new_params')
 os.makedirs(output_path,exist_ok=True)

@@ -1,13 +1,27 @@
 import cv2
+import numpy as np
 from pathlib import Path
 
-root_p = Path(r'F:\MyDataF\DataSet\kate_dance_01\test')
-ext = "png"
+# 把图片二值化，用途是把合成数据的depth做成mask
 
+# ----------------------------修改-----------------------------------------
+root_p = Path(r'E:\BaiduNetdiskDownload\synth\megan_dance_03\PhySG\megan_dance_03\PhySG_megan\mask')
+ext = "png"
+flood_fill = False
+morphologyEx = False
 
 # ---------------------------------------------------------
 for img_path in root_p.rglob(f'*.{ext}'):
     img = cv2.imread(str(img_path), cv2.IMREAD_GRAYSCALE)
     ret, img = cv2.threshold(img, 1, 255, cv2.THRESH_BINARY)
-    cv2.imshow("1", img)
+    if flood_fill:
+        h, w = img.shape[:2]
+        img_flood = img.copy()
+        flood_mask = np.zeros((h+2, w+2), np.uint8)
+        cv2.floodFill(img_flood, flood_mask, (0, 0), 255)
+        img_flood = cv2.bitwise_not(img_flood)
+        img = img | img_flood
+    if morphologyEx:
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
+        img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
     cv2.imwrite(str(img_path), img)
