@@ -1,4 +1,5 @@
 # 把三通道的jpg加上mask组成四通道的png
+# 好像是nvdiffrec用的
 import glob
 import os.path
 

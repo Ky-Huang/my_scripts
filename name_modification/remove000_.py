@@ -2,7 +2,7 @@
 from pathlib import Path
 
 # -----------------------------------修改---------------------------------------------------
-p = Path(r'F:\MyDataF\DataSet\synth\smpl1_dance\easymocap_mistyfarmroad')
+p = Path(r'E:\BaiduNetdiskDownload\synth\brain_dance_for_lightgraid_02.blend\brain_dance_for_lightgraid_02_view2\images\02')
 # -------------------------------------------------------------------------------------------
 for img_path in p.rglob("*.png"):
     basename = img_path.name

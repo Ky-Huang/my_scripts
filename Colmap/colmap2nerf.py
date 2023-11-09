@@ -274,7 +274,7 @@ if __name__ == "__main__":
 			else:
 				print("Unknown camera model ", els[1])
 			# fl = 0.5 * w / tan(0.5 * angle_x);
-			camera["camera_angle_x"] = math.atan(camera["w"] / (camera["fl_x"] * 2)) * 2
+			camera["camera_angle_x"] = math.atan(camera["w"] / (camera["fl_x"] * 2)) * 2		# camera_angle_x
 			camera["camera_angle_y"] = math.atan(camera["h"] / (camera["fl_y"] * 2)) * 2
 			camera["fovx"] = camera["camera_angle_x"] * 180 / math.pi
 			camera["fovy"] = camera["camera_angle_y"] * 180 / math.pi
@@ -338,12 +338,12 @@ if __name__ == "__main__":
 				R = qvec2rotmat(-qvec)
 				t = tvec.reshape([3,1])
 				m = np.concatenate([np.concatenate([R, t], 1), bottom], 0)
-				c2w = np.linalg.inv(m)
+				c2w = np.linalg.inv(m)								# 把R和T还有其次矩阵一起逆变换了
 				if not args.keep_colmap_coords:
 					c2w[0:3,2] *= -1 # flip the y and z axis
-					c2w[0:3,1] *= -1
-					c2w = c2w[[1,0,2,3],:]
-					c2w[2,:] *= -1 # flip whole world upside down
+					c2w[0:3,1] *= -1							
+					c2w = c2w[[1,0,2,3],:]							# 这里是干嘛的
+					c2w[2,:] *= -1 # flip whole world upside down	# 这又是啥原理
 
 					up += c2w[0:3,1]
 

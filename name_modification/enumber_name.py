@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-path = Path(r'F:\MyDataF\DataSet\synth\smpl2_dance_multiView_singleFrame\easymocap\images')
+path = Path(r'E:\BaiduNetdiskDownload\synth\brain_dance_for_lightgraid_02.blend\brain_dance_for_lightgraid_02_view2\mask\02')
 ext = 'png'
 
 for i, file in enumerate(sorted(path.glob(f'*.{ext}'), key=lambda path : int(path.stem))):
