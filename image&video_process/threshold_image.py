@@ -5,7 +5,7 @@ from pathlib import Path
 # 把图片二值化，用途是把合成数据的depth做成mask
 
 # ----------------------------修改-----------------------------------------
-root_p = Path(r'C:\Users\Administrator\Desktop\temp\nvdiffrec313\mask')
+root_p = Path(r'E:\BaiduNetdiskDownload\synth\megan_dance_04_xie\megan_dance_04_cqf\physg\mask')
 ext = "png"
 flood_fill = False
 morphologyEx = False

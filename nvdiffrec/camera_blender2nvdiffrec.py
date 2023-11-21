@@ -3,19 +3,21 @@ import math
 import json
 import numpy as np
 
-file_path = r'F:\MyDataF\DataSet\zju-mocap\CoreView_313\annots.json'
-output_path = r'F:\MyDataF\DataSet\zju-mocap\CoreView_313\nvdiffrec_transform_512.json'
+file_path = r'E:\BaiduNetdiskDownload\synth\josh_dance_02\josh_dance_02_cqf_nvdiff\camera_record.json'
+output_path = r'E:\BaiduNetdiskDownload\synth\josh_dance_02\josh_dance_02_cqf_nvdiff\nvdiffrec_transform_512.json'
 
 image_width = 512
 bottom = np.array([0.0, 0.0, 0.0, 1.0]).reshape([1, 4])
 with open(file_path) as f:
     data = json.load(f)
-    # print(data)
-    Ks = np.array(data['cams']['20190823']['K'])
+    Ks, Rs, Ts = [], [], []
+    for key, value in data.items():
+        Ks.append(np.array(value['K']))
+        Rs.append(np.array(value['RT'])[:3, :3].reshape(3,3))
+        # Ts.append(np.array(data['cams']['20190823']['T']) / 1000)
+        Ts.append(np.array(value['RT'])[:3, 3].reshape(3,1))
+    Ks, Rs, Ts = np.array(Ks), np.array(Rs), np.array(Ts)
     Ks[:, :2] = Ks[:, :2] / 2                                                       # 从1024到512分辨率，内参也要改
-    Rs = np.array(data['cams']['20190823']['R'])
-    Ts = np.array(data['cams']['20190823']['T']) / 1000                             # 从1024到512分辨率，要改吗
-    Ds = np.array(data['cams']['20190823']['D'])
 output_json = {}
 output_json["camera_angle_x"] = math.atan(image_width / (Ks[0, 0, 0] * 2)) * 2      # 用第一个相机的fx作为所有相机的fx
 output_json["frames"] = []

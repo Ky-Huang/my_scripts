@@ -6,8 +6,8 @@ import os
 import time
 import numpy as np
 
-file_path = r'E:\BaiduNetdiskDownload\synth\megan_dance_03\PhySG\megan_dance_03\camera_record.json'
-output_path = r'E:\BaiduNetdiskDownload\synth\megan_dance_03\PhySG\megan_dance_03\PhySG_megan\cam_dict_norm.json'
+file_path = r'E:\BaiduNetdiskDownload\synth\megan_dance_04_xie\megan_dance_04_cqf\camera_record.json'
+output_path = r'E:\BaiduNetdiskDownload\synth\megan_dance_04_xie\megan_dance_04_cqf\physg\cam_dict_norm.json'
 with open(file_path) as f:
     data = json.load(f)
     output_json = {}
