@@ -1,3 +1,4 @@
+# 谢子玄给的
 from Colmap.colmap_read_write_model import read_cameras_binary, read_images_binary, qvec2rotmat, read_cameras_text, read_images_text
 import numpy as np
 import os

@@ -7,7 +7,7 @@
 # and any modifications thereto.  Any use, reproduction, disclosure or
 # distribution of this software and related documentation without an express
 # license agreement from NVIDIA CORPORATION is strictly prohibited.
-
+# NVIDIA instant-ngp给的代码
 import argparse
 from glob import glob
 import os
