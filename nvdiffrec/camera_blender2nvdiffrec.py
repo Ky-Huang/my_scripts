@@ -1,5 +1,4 @@
-# 用于把zjumocap313 的相机参数转成nvdiffrec需要的格式,稍微改一改可以用作easymocap定标出来的
-import math
+# 用于把blender画的的相机camera_record参数转成nvdiffrec需要的格式
 import json
 import numpy as np
 
@@ -19,7 +18,7 @@ with open(file_path) as f:
     Ks, Rs, Ts = np.array(Ks), np.array(Rs), np.array(Ts)
     Ks[:, :2] = Ks[:, :2] / 2                                                       # 从1024到512分辨率，内参也要改
 output_json = {}
-output_json["camera_angle_x"] = math.atan(image_width / (Ks[0, 0, 0] * 2)) * 2      # 用第一个相机的fx作为所有相机的fx
+output_json["camera_angle_x"] = math.atan(image_width / (Ks[0, 0, 0] * 2)) * 2      # 用第一个相机的fx作为所有相机的x和y方向的焦距
 output_json["frames"] = []
 for i in range(len(Ks)):
     w2c = np.concatenate([np.concatenate([Rs[i], Ts[i]], 1), bottom], 0)

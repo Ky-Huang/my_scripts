@@ -8,17 +8,17 @@ import numpy as np
 import cv2
 import glob
 
-input_root =  r'E:\BaiduNetdiskDownload\for relighting quan  1128\rrengine_result_gt_1024_4k\_PNG\venice'
-output_root = r'E:\BaiduNetdiskDownload\for relighting quan  1128\rrengine_result_gt_1024_4k\_PNG\venice'
+input_root =  r'F:\MyDataF\6ae3096788db279f5cc2b79e8aef2da.jpg'
+output_root = r'F:\MyDataF\6ae3096788db279f5cc2b79e8aef2da.jpg'
 
 
 ### humannerf
 input_dir = r'G:\MyData\HumanNeRF\jinitaimei_images'
 for input_image in glob.glob(input_dir + '/*.png'):
     ori_img = cv2.imread(input_image)
-    crop_img = ori_img[:, :1280, :]                                                             # 裁切[高，宽，rgb]
-    # resized_image = cv2.resize(ori_img, (512, 512), interpolation=cv2.INTER_LINEAR)           # resize
-    cv2.imwrite(input_image, crop_img)
+    # crop_img = ori_img[:, :1280, :]                                                             # 裁切[高，宽，rgb]
+    resized_image = cv2.resize(ori_img, (ori_img.size[1]//2, ori_img.size[0]//2), interpolation=cv2.INTER_LINEAR)           # resize
+    cv2.imwrite(input_image, resized_image)
 
 
 

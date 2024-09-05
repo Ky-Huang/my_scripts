@@ -1,3 +1,6 @@
+# 使用SAM conda环境。
+# 左键点击提供正面prompt，右键点击提供负面prompt，空格确认，ESC清除prompt
+
 
 import numpy as np
 import cv2
