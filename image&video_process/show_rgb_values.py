@@ -47,7 +47,7 @@ def mouse_callback(event, x, y, flags, param):
         print(f"RGB值（浮点数）: {rgb_float}")
 
 # 读取图像
-img = cv2.imread(r'C:\Users\GXY\Desktop\biye_images\test\LDMtexture_frame_0_sem.png', flags=cv2.IMREAD_COLOR)
+img = cv2.imread(r'C:\Users\GXY\Desktop\biye_images\blender\edit\syth_kate_dance_03-sem-0918-1\LDMtexture_frame_0_sem.png', flags=cv2.IMREAD_COLOR)
 
 # 显示图像
 cv2.imshow('Image', img)

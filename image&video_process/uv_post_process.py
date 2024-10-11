@@ -1,7 +1,11 @@
+# 根据animSeg出来的二维纹理进行纹理编辑（选中分割图中同色部分，修改对应位置纹理）
+
 import cv2
 import numpy as np
+import os
 
-def visualize_and_modify_pixels(image_path, target_rgb, new_rgb, threshold, second_image_path):
+
+def visualize_and_modify_pixels(root_dir, image_path, target_rgb, new_rgb, threshold, second_image_path):
     # 读取图像
     image = cv2.imread(image_path)
     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -47,17 +51,24 @@ def visualize_and_modify_pixels(image_path, target_rgb, new_rgb, threshold, seco
     cv2.imshow("Highlighted Selected Pixels", highlighted_image_bgr)
     cv2.imshow("Modified Second Image", second_image_bgr)
     cv2.waitKey(0)
-    cv2.imwrite(r'C:\Users\GXY\Desktop\biye_images\test\modified_image3.png', second_image_bgr)
-    cv2.imwrite(r'C:\Users\GXY\Desktop\biye_images\test\highlighted_image3.png', highlighted_image_bgr)
+    cv2.imwrite(os.path.join(root_dir, 'modified_image3.png') , second_image_bgr)
+    cv2.imwrite(os.path.join(root_dir, 'highlighted_image3.png') , highlighted_image_bgr)
     cv2.destroyAllWindows()
 
-# 示例用法
-image_path = r'C:\Users\GXY\Desktop\biye_images\test\LDMtexture_frame_0_sem.png'    # semUV图
-second_image_path = r'C:\Users\GXY\Desktop\biye_images\test\LDMtexture_frame_0.png'  # 纹理UV图
-target_rgb1 = [0.839, 0.082, 0.345]
-target_rgb2 = [0.937, 0.941, 0.498]
-target_rgb3 = [0.6156863 ,0.3372549, 0.85882354]
-new_rgb = [0.1,0.9,0.1]
-threshold = 0.18  # 阈值
 
-visualize_and_modify_pixels(image_path, [target_rgb1, target_rgb2, target_rgb3], new_rgb, threshold, second_image_path)
+
+if __name__ == '__main__':
+    root_dir = r'C:\Users\GXY\Desktop\biye_images\blender\edit\syth_kate_dance_03-sem-0918-1'
+    # 示例用法
+    image_path = os.path.join(root_dir, 'LDMtexture_frame_0_sem.png')     # semUV图
+    second_image_path = os.path.join(root_dir, 'LDMtexture_frame_0.png')   # 纹理UV图
+    # target_rgb1 = [0.839, 0.082, 0.345]
+    # target_rgb2 = [0.937, 0.941, 0.498]
+    # target_rgb3 = [0.6156863 ,0.3372549, 0.85882354]
+    target_rgb = [[0.6117647, 0.972549, 0.81960785], [0.9307843, 0.09215687, 0.80686276], [0.7529412, 0.5254902, 0.18431373]]
+    new_rgb = [0.1,0.9,0.1]
+    threshold = 0.20  # 阈值
+
+    visualize_and_modify_pixels(root_dir, image_path, target_rgb, new_rgb, threshold, second_image_path)
+
+
