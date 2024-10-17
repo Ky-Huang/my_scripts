@@ -87,10 +87,10 @@ import os
 import cv2
 from tqdm import tqdm
 
-root_dir = r'E:\data\xrg\LDM_CVM'
+root_dir = r'C:\Users\GXY\Desktop\shipin\tem'
 
 
-def images_to_video(image_folder, video_name, fps=30):
+def images_to_video(image_folder, video_name, fps=60):
     images = [img for img in os.listdir(image_folder) if img.endswith(".png") or img.endswith(".jpg")]
     images.sort()  # 排序图片，确保按照文件名顺序处理
     if not images:
